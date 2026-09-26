@@ -39,12 +39,14 @@ def plot_correlation_heatmap(X_train):
         
 
 
+
 def plot_feature_histograms(X_train):
     X_train.hist(bins=30,figsize=(15, 10))
     plt.tight_layout()
     plt.show()
     
     
+  
     
 def plot_confusion_matrix(model, X_test_scaled, y_test, title: str = "Confusion Matrix"):
     y_pred = model.predict(X_test_scaled)
@@ -71,6 +73,7 @@ def plot_roc_curves(model_proba: dict, y_test):
     plt.legend()
     plt.tight_layout()
     plt.show()
+ 
  
  
  
