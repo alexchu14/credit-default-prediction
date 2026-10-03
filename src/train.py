@@ -12,7 +12,7 @@ from sklearn.base import clone
 from sklearn.metrics import f1_score
 from sklearn.model_selection import ParameterGrid
 
-from src.data import load_raw_data, print_class_report, stratified_split
+from src.data import load_raw_data, stratified_split
 from src.features import build_preprocessor
 from src.models import get_models_and_params
 
@@ -86,10 +86,6 @@ def run_baseline_pipeline(random_state: int = 42) -> dict:
         X, y, random_state=random_state
     )
 
-    print_class_report(y_train, "Train")
-    print_class_report(y_val, "Validation")
-    print_class_report(y_test, "Test")
-
 
     preprocessor = build_preprocessor()
     X_train_scaled = preprocessor.fit_transform(X_train)
@@ -108,6 +104,12 @@ def run_baseline_pipeline(random_state: int = 42) -> dict:
     )
 
     return {
+        "X_train_scaled": X_train_scaled,
+        "y_train": y_train,
+        "X_val_scaled": X_val_scaled,
+        "y_val":y_val,
+        "X_test_scaled": X_test_scaled,
+        "y_test": y_test,
         "preprocessor": preprocessor,
         "models_and_params": models_and_params,
         "best_models": best_models,
