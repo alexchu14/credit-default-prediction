@@ -31,9 +31,9 @@ def get_models_and_params(random_state: int = 42) -> dict:
         },
         
         "Support Vector Machine": {
-            "model": SVC(max_iter=3000, tol=0.1, random_state=random_state),
+            "model": SVC(max_iter=10000, random_state=random_state),
             "params": {
-                "C": [0.01, 0.1, 1, 5],
+                "C": [0.01, 0.1, 1],
                 "kernel": ["rbf"],
                 "gamma": ["scale", "auto"],
                 "class_weight": [None, "balanced"],
