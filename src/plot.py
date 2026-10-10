@@ -91,3 +91,17 @@ def plot_pr_curves(model_proba: dict, y_test):
     plt.legend()
     plt.tight_layout()
     plt.show()
+    
+
+def plot_cost_curve(cost_curve, best_threshold: float):
+    """Plot expected cost vs. decision threshold, with the cost-minimizing threshold marked."""
+    import matplotlib.pyplot as plt
+
+    plt.plot(cost_curve["threshold"], cost_curve["expected_cost"])
+    plt.axvline(best_threshold, color="red", linestyle="--", label=f"Optimal threshold = {best_threshold:.2f}")
+    plt.xlabel("Decision threshold")
+    plt.ylabel("Expected cost (validation set)")
+    plt.title("Cost-sensitive threshold selection")
+    plt.legend()
+    plt.tight_layout()
+    plt.show()    
